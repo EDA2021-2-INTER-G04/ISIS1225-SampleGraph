@@ -28,6 +28,7 @@
 import sys
 import config
 import threading
+import time
 from App import controller
 from DISClib.ADT import stack
 assert config
@@ -69,12 +70,16 @@ def printMenu():
 
 def optionTwo(cont):
     print("\nCargando información de transporte de singapur ....")
+    start_time = time.process_time()
     controller.loadServices(cont, servicefile)
     numedges = controller.totalConnections(cont)
     numvertex = controller.totalStops(cont)
     print('Numero de vertices: ' + str(numvertex))
     print('Numero de arcos: ' + str(numedges))
     print('El limite de recursion actual: ' + str(sys.getrecursionlimit()))
+    stop_time = time.process_time()
+    elapsed_time_ms = (stop_time-start_time)*1000
+    print("\nLa operación tardó ", elapsed_time_ms, " ms.")
 
 
 def optionThree(cont):
@@ -83,7 +88,11 @@ def optionThree(cont):
 
 
 def optionFour(cont, initialStation):
+    start_time = time.process_time()
     controller.minimumCostPaths(cont, initialStation)
+    stop_time = time.process_time()
+    elapsed_time_ms = (stop_time-start_time)*1000
+    print("\nLa operación tardó ", elapsed_time_ms, " ms.")
 
 
 def optionFive(cont, destStation):
