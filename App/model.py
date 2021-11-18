@@ -134,7 +134,7 @@ def addRouteStop(analyzer, service):
 def addRouteConnections(analyzer):
     """
     Por cada vertice (cada estacion) se recorre la lista
-    de rutas servidas en dicha estación y se crean
+    de rutas servidas en dicha estacion y se crean
     arcos entre ellas para representar el cambio de ruta
     que se puede realizar en una estación.
     """
